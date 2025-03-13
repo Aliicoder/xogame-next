@@ -1,7 +1,7 @@
-import { IGameBoard } from "@/types/types";
+import { IGameBoard } from "@/types"
 
 export const initialGame: IGameBoard = [
   [null, null, null],
   [null, null, null],
-  [null, null, null]
+  [null, null, null],
 ]
