@@ -13,14 +13,6 @@ const OnlineBoard = ({ gameBoard, addNewTurn, lock }: OnlineBoardProps) => {
         }`}
       >
         <div
-          className={`w-full m-10 px-3 py-2 flex justify-between rounded-md  ${
-            true ? "text-green-500" : "text-red-500"
-          } bg-[#303030]`}
-        >
-          <h1>connects</h1>
-          <div>{connections} / 2</div>
-        </div>
-        <div
           className={`text-white gameBoard text-4xl outline outline-black ${
             lock && `pointer-events-none`
           }`}
