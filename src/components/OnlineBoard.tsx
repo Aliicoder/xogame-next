@@ -1,52 +1,60 @@
 import Link from "next/link"
 import { TbCopyCheckFilled } from "react-icons/tb"
-import { IoLogoWhatsapp } from "react-icons/io"
+import { IoLogoWhatsapp, IoMdReturnLeft } from "react-icons/io"
 import { OnlineBoardProps } from "@/types"
 import { handleCopyLink, handleWhatsAppShare } from "@/utils/helpers"
 const OnlineBoard = ({ gameBoard, addNewTurn, lock }: OnlineBoardProps) => {
-  const connections = 0
   return (
     <>
-      <div
-        className={`place-self-center flex flex-col items-center ${
-          lock ? "pointer-events-none" : ""
-        }`}
-      >
-        <div
-          className={`text-white gameBoard text-4xl outline outline-black ${
-            lock && `pointer-events-none`
-          }`}
-        >
-          {gameBoard.map((row, i) => (
-            <ul className="flex" key={i}>
-              {row.map((column, j) => (
-                <button
-                  disabled={column ? true : false}
-                  onClick={() => addNewTurn(i, j)}
-                  className="flex justify-center items-center w-20 h-20 outline outline-[#303030] outline-1 "
-                  key={j}
-                >
-                  {column}
-                </button>
-              ))}
-            </ul>
-          ))}
+      <div className={`h-full flex flex-col justify-between items-center `}>
+        <div className="w-full h-fit flex justify-start">
+          <Link
+            className="w-fit relative z-10 flex items-center gap-3 m-10 px-3 py-2 rounded-md  text-red-500 bg-[#303030]
+            hover:outline hover:pl-4 transition-all"
+            href={"/"}
+          >
+            <IoMdReturnLeft />
+            leave
+          </Link>
         </div>
-        <button
-          onClick={handleWhatsAppShare}
-          className="flex justify-between items-center w-full m-10 mb-5 px-3 py-2 rounded-md  text-green-500 bg-[#303030]
+        <div className=" flex flex-col items-center">
+          <div
+            className={`text-white gameBoard text-4xl outline outline-black ${
+              lock && `pointer-events-none`
+            }`}
+          >
+            {gameBoard.map((row, i) => (
+              <ul className="flex" key={i}>
+                {row.map((column, j) => (
+                  <button
+                    disabled={column ? true : false}
+                    onClick={() => addNewTurn(i, j)}
+                    className="flex justify-center items-center w-20 h-20 outline outline-[#303030] outline-1 "
+                    key={j}
+                  >
+                    {column}
+                  </button>
+                ))}
+              </ul>
+            ))}
+          </div>
+          <button
+            onClick={handleWhatsAppShare}
+            className=" flex justify-between items-center w-full m-10 mb-5 px-3 py-2 rounded-md  text-green-500 bg-[#303030]
             hover:outline hover:pl-4 transition-all"
-        >
-          share invitation
-          <IoLogoWhatsapp />
-        </button>
-        <button
-          onClick={handleCopyLink}
-          className="flex justify-between items-center w-full m-10 mt-0 px-3 py-2 rounded-md  text-blue-500 bg-[#303030]
+          >
+            share invitation
+            <IoLogoWhatsapp />
+          </button>
+          <button
+            onClick={handleCopyLink}
+            className="flex justify-between items-center w-full m-10 mt-0 px-3 py-2 rounded-md  text-blue-500 bg-[#303030]
             hover:outline hover:pl-4 transition-all"
-        >
-          copy link <TbCopyCheckFilled />
-        </button>
+          >
+            copy link <TbCopyCheckFilled />
+          </button>
+        </div>
+        <div />
       </div>
     </>
   )

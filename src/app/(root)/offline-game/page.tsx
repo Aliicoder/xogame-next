@@ -12,18 +12,9 @@ const page = () => {
   const { turns, gameBoard, addNewTurn, reset } = useTurner()
   let winner: string | null = checkForWinner(gameBoard)
   return (
-    <div className="relative grid h-screen w-screen">
-      <Link
-        className="absolute flex items-center gap-3 m-10 px-3 py-2 rounded-md  text-red-500 bg-[#303030]
-            hover:outline hover:pl-4 transition-all"
-        href={"/"}
-      >
-        <IoMdReturnLeft />
-        leave
-      </Link>
+    <div className="relative  h-screen w-screen">
       {winner && <Winner winner={winner} handleReset={reset} />}
       {turns.length == 9 && <NoWinner handleReset={reset} />}
-
       <OfflineBoard gameBoard={gameBoard} addNewTurn={addNewTurn} />
     </div>
   )

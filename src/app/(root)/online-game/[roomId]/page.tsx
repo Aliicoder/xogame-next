@@ -35,15 +35,7 @@ const Page = () => {
   let winner = checkForWinner(gameBoard)
 
   return (
-    <div className="grid w-svw h-svh">
-      <Link
-        className="absolute flex items-center  gap-3  m-10 px-3 py-2 rounded-md  text-red-500 bg-[#303030]
-            hover:outline hover:pl-4 transition-all"
-        href={"/"}
-      >
-        <IoMdReturnLeft />
-        leave
-      </Link>
+    <div className="relative  h-screen w-screen">
       {winner && <Winner winner={winner} handleReset={reset} />}
       {turns.length === 9 && !winner && <NoWinner handleReset={reset} />}
       <OnlineBoard
